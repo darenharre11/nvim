@@ -45,14 +45,14 @@ map("n", "<leader>w", ":w<CR>")
 -- fast exiting buffer
 map("n", "<leader>q", ":Bdelete!<CR>")
 
--- close all buffers except the current
-map("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" }) -- https://stackoverflow.com/a/42071865/516188
-
 -- Close all windows and exit from Neovim with <leader> and q
 map("n", "<leader>Q", ":qa!<CR>")
 
 -- Edit your nvim config
 map("n", "<leader>;", ":e $MYVIMRC <CR>")
+
+-- close all buffers except the current
+map("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" }) -- https://stackoverflow.com/a/42071865/516188
 
 -----------------------------------------------------------
 -- Misc
@@ -160,7 +160,8 @@ map("n", "<leader>fg", ":Telescope live_grep<CR>")                              
 map("n", "<leader>fk", ":Telescope keymaps<CR>")                                 -- find keymaps
 map("n", "<leader>fp", ":Telescope projects<CR>")                                -- find recently opened git projects
 map("n", "<leader>fi", ":Telescope highlights<CR>")                              -- find nvim highlights
-map("n", "<leader>fu", ":lua require(\"telescope\").extensions.undo.undo()<CR>") -- find nvim highlights
+map("n", "<leader>fu", ":lua require(\"telescope\").extensions.undo.undo()<CR>") -- review previous undo logs
+map("n", "<leader>fn", ":Telescope notify<CR>")                                  -- review all notifications
 
 -- Which key
 map("n", "<leader>k", ":WhichKey<CR>")

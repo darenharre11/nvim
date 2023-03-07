@@ -262,6 +262,11 @@ _G.packer_plugins = {
     path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
   },
+  ["nvim-recorder"] = {
+    loaded = true,
+    path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/nvim-recorder",
+    url = "https://github.com/chrisgrieser/nvim-recorder"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -302,10 +307,10 @@ _G.packer_plugins = {
     path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/splitjoin.vim",
     url = "https://github.com/AndrewRadev/splitjoin.vim"
   },
-  ["telescope-undo.nvim"] = {
+  ["telescope-undo"] = {
     loaded = true,
-    path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/telescope-undo.nvim",
-    url = "https://github.com/debugloop/telescope-undo.nvim"
+    path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/telescope-undo",
+    url = "https://github.com/debugloop/telescope-undo"
   },
   ["telescope.nvim"] = {
     loaded = true,

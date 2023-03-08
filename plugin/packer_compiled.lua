@@ -307,11 +307,6 @@ _G.packer_plugins = {
     path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/splitjoin.vim",
     url = "https://github.com/AndrewRadev/splitjoin.vim"
   },
-  ["telescope-undo"] = {
-    loaded = true,
-    path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/telescope-undo",
-    url = "https://github.com/debugloop/telescope-undo"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -356,6 +351,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/vim-lion",
     url = "https://github.com/tommcdo/vim-lion"
+  },
+  ["vim-mundo"] = {
+    loaded = true,
+    path = "/home/pburneux/.local/share/nvim/site/pack/packer/start/vim-mundo",
+    url = "https://github.com/simnalamburt/vim-mundo"
   },
   ["vim-repeat"] = {
     loaded = true,

@@ -19,6 +19,7 @@ vim.opt.pumheight = 10                          -- pop up menu height
 vim.opt.showtabline = 0                         -- always show tabs
 vim.opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true                         -- enable persistent undo
+-- vim.opt.undodir = "~/.vim/undo"
 vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.laststatus = 3                          -- only the last window will always have a status line
@@ -68,11 +69,11 @@ vim.opt.sidescrolloff = 8 -- the side of the window
 -----------------------------------------------------------
 -- Wrapping
 -----------------------------------------------------------
-vim.opt.wrap = true         -- Wrap lines
-vim.opt.linebreak = true    -- Wrap on word boundary
-vim.opt.showbreak = ">>"    -- Show characters on broken line
-vim.opt.textwidth = 80      -- Break at this amount
-vim.opt.breakindent = false -- Indent wrapped line
+vim.opt.wrap = true        -- Wrap lines
+vim.opt.linebreak = true   -- Wrap on word boundary
+vim.opt.showbreak = ">>"   -- Show characters on broken line
+vim.opt.textwidth = 80     -- Break at this amount
+vim.opt.breakindent = true -- Indent wrapped line
 
 -----------------------------------------------------------
 -- Tabs, indent

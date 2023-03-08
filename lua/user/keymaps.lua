@@ -39,6 +39,8 @@ local opts = {}
 -- Nvim controls
 ----------------------------------------------------------
 
+-- Reload nvim config
+map("n", "<leader>R", ":source ~/.config/nvim/init.lua<CR>")
 -- Fast saving with <leader> and w
 map("n", "<leader>w", ":w<CR>")
 
@@ -177,3 +179,6 @@ map("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
 map("n", "<leader>tl", "<cmd>TroubleToggle loclist<cr>")
 map("n", "<leader>tq", "<cmd>TroubleToggle quickfix<cr>")
 map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>")
+
+-- Mundo.vim
+map("n", "<leader>u", ":MundoToggle<CR>")

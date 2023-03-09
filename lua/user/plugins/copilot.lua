@@ -1,7 +1,7 @@
 local status_ok, copilot = pcall(require, "copilot")
 
 if not status_ok then
-	return
+  return
 end
 
 -- Tell copilot to use older version of node 12.x-17.x (required as of Oct 2022)
@@ -12,9 +12,9 @@ vim.g.copilot_node_command = "~/.nvm/versions/node/v17.0.1/bin/node"
 -- vim.g.copilot_tab_fallback = ""
 -- vim.g.copilot_no_tab_map = true
 
-require('copilot').setup({
+copilot.setup({
   panel = {
-    enabled = true,
+    enabled = false,
     auto_refresh = false,
     keymap = {
       jump_prev = "[[",
@@ -25,17 +25,19 @@ require('copilot').setup({
     },
   },
   suggestion = {
-    enabled = true,
+    enabled = false,
     auto_trigger = false,
     debounce = 75,
     keymap = {
-     accept = "<M-l>",
-     next = "<M-]>",
-     prev = "<M-[>",
-     dismiss = "<C-]>",
+      accept = "<M-l>",
+      next = "<M-]>",
+      prev = "<M-[>",
+      dismiss = "<C-]>",
     },
   },
   filetypes = {
+        ["*"] = true,
+        ["."] = true,
     yaml = false,
     markdown = false,
     help = false,
@@ -44,7 +46,13 @@ require('copilot').setup({
     hgcommit = false,
     svn = false,
     cvs = false,
-    ["."] = false,
+    sh = function()
+      if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
+        -- disable for .env files
+        return false
+      end
+      return true
+    end,
   },
   copilot_node_command = 'node', -- Node version must be < 18
   server_opts_overrides = {},

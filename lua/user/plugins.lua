@@ -53,44 +53,45 @@ return packer.startup(function(use)
   -- General plugins
   ------------------------
 
-  use({ "wbthomason/packer.nvim" })                      -- Have packer manage itself
-  use({ "nvim-lua/plenary.nvim" })                       -- Useful lua functions used by lots of plugins
-  use({ "windwp/nvim-autopairs" })                       -- Autopairs, integrates with both cmp and treesitter
-  use({ "numToStr/Comment.nvim" })                       -- Auto-commenter via gcc
-  use({ "kyazdani42/nvim-web-devicons" })                --Pretty icons
-  use({ "kyazdani42/nvim-tree.lua" })                    --File explorer
+  use({ "wbthomason/packer.nvim" })                     -- Have packer manage itself
+  use({ "nvim-lua/plenary.nvim" })                      -- Useful lua functions used by lots of plugins
+  use({ "lewis6991/impatient.nvim" })                   -- Impatient.nvim: Speed up loading Lua modules in Neovim to improve startup time.
+  use({ "windwp/nvim-autopairs" })                      -- Autopairs, integrates with both cmp and treesitter
+  use({ "numToStr/Comment.nvim" })                      -- Auto-commenter via gcc
+  use({ "kyazdani42/nvim-web-devicons" })               -- Pretty icons
+  use({ "kyazdani42/nvim-tree.lua" })                   -- File explorer
   -- use({ "romgrk/barbar.nvim" })
-  use({ "akinsho/bufferline.nvim" })                     --Bbye allows you to do delete buffers (close files) without closing your windows or messing up your layout.
-  use({ "moll/vim-bbye" })                               --Bbye allows you to do delete buffers (close files) without closing your windows or messing up your layout.
-  use({ "nvim-lualine/lualine.nvim" })                   --Bottom line
-  use({ "akinsho/toggleterm.nvim" })                     --Floating terminal
-  use({ "ahmedkhalf/project.nvim" })                     -- Project trackers
-  -- use({ "lewis6991/impatient.nvim" })                    --Impatient.nvim: Speed up loading Lua modules in Neovim to improve startup time.
-  use({ "lukas-reineke/indent-blankline.nvim" })         --indents next line, i.e. o and O
-  use({ "goolord/alpha-nvim" })                          -- Alpha: dashboard for nvim
-  use({ "nvim-telescope/telescope.nvim" })               -- Telescope: fuzzy finder niceness
-  use({ "nvim-treesitter/nvim-treesitter" })             -- better highlighting
-  use({ "lewis6991/gitsigns.nvim" })                     -- show git signs in gutter
-  use({ "AndrewRadev/splitjoin.vim" })                   -- gS and gJ to split single lines to multiple and vice versa
-  use({ "airblade/vim-rooter" })                         -- set root directory to project base
-  use({ "tommcdo/vim-lion" })                            -- Vertically align text via gl and gL
-  use({ "folke/trouble.nvim" })                          -- TroubleToggle
-  use({ "rcarriga/nvim-notify" })                        -- Handy notifications for vim actions
-  use({ "folke/lsp-colors.nvim" })                       -- Recommended for Trouble
-  use({ "NvChad/nvim-colorizer.lua" })                   -- Show hex codes as colors
+  use({ "akinsho/bufferline.nvim" })                    -- Show buffer tab bar at top
+  use({ "nvim-lualine/lualine.nvim" })                  -- Bottom line
+  use({ "akinsho/toggleterm.nvim" })                    -- Floating terminal
+  use({ "ahmedkhalf/project.nvim" })                    -- Project trackers
+  use({ "lukas-reineke/indent-blankline.nvim" })        -- indents next line, i.e. o and O
+  use({ "goolord/alpha-nvim" })                         -- Alpha: dashboard for nvim
+  use({ "nvim-telescope/telescope.nvim" })              -- Telescope: fuzzy finder niceness
+  use({ "nvim-treesitter/nvim-treesitter" })            -- better highlighting
+  use({ "lewis6991/gitsigns.nvim" })                    -- show git signs in gutter
+  use({ "AndrewRadev/splitjoin.vim" })                  -- gS and gJ to split single lines to multiple and vice versa
+  use({ "airblade/vim-rooter" })                        -- set root directory to project base
+  use({ "tommcdo/vim-lion" })                           -- Vertically align text via gl and gL
+  use({ "folke/trouble.nvim" })                         -- TroubleToggle
+  use({ "rcarriga/nvim-notify" })                       -- Handy notifications for vim actions
+  use({ "folke/lsp-colors.nvim" })                      -- Recommended for Trouble
+  use({ "NvChad/nvim-colorizer.lua" })                  -- Show hex codes as colors
   use({ "JoosepAlviste/nvim-ts-context-commentstring" }) --Apply appropriate comments based on where you are in file, not just filetype
-  use({ "jose-elias-alvarez/typescript.nvim" })          -- Typescript utils
-  use({ "folke/which-key.nvim" })                        --keymap reminder window
+  use({ "jose-elias-alvarez/typescript.nvim" })         -- Typescript utils
+  use({ "folke/which-key.nvim" })                       -- keymap reminder window
   -- use({ "farmergreg/vim-lastplace" })                    -- move to last place when opening file
-  use({ "Pocco81/auto-save.nvim" })                      -- because im lazy
-  use({ "famiu/bufdelete.nvim" })                        -- because im
-  use({ "gcmt/wildfire.vim" })                           -- select the closest text object among a group of candidatee
-  use({ "christoomey/vim-tmux-navigator" })              --also install in tmux
-  use({ "MunifTanjim/nui.nvim" })                        --noice requirement
-  use({ "folke/noice.nvim" })                            -- a bunch of stuff like, messages to notify.nvim, signature help, :command prompt and more
-  use({ "chrisgrieser/nvim-recorder" })                  --better macro experience. useful with noice since cmd bottom bar goes away.
-  use({ "simnalamburt/vim-mundo" })                      -- undo ui
-
+  use({ "Pocco81/auto-save.nvim" })                     -- because im lazy
+  use({ "famiu/bufdelete.nvim" })                       -- because im
+  use({ "gcmt/wildfire.vim" })                          -- select the closest text object among a group of candidatee
+  -- use({ "christoomey/vim-tmux-navigator" })             -- also install in tmux
+  use({ "MunifTanjim/nui.nvim" })                       -- noice requirement
+  use({ "folke/noice.nvim" })                           -- a bunch of stuff like, messages to notify.nvim, signature help, :command prompt and more
+  use({ "chrisgrieser/nvim-recorder" })                 -- better macro experience. useful with noice since cmd bottom bar goes away.plugins
+  use({ "simnalamburt/vim-mundo" })                     -- undo ui
+  use({ "moll/vim-bbye" })                              -- Bbye allows you to do delete buffers (close files) without closing your windows or messing up your layout.
+  use({ "d10n/vim-toggle-help" })                       -- add a toggler for the help window
+  use({ "dstein64/vim-startuptime" })                   -- plugin to visualize status up time.. :StartupTime
 
   -- --wilder
   -- use({ "gelguy/wilder.nvim" })    -- a better wildmenu (:command auto completion)
@@ -98,11 +99,10 @@ return packer.startup(function(use)
   -- use({ "sharkdp/fd" })            -- a better wildmenu (:command auto completion)
   -- use({ "nixprime/cpsm" })         -- a better wildmenu (:command auto completion)
 
-
   -- tpope magic
-  use({ "tpope/vim-repeat" })   -- better repeat
+  use({ "tpope/vim-repeat" })  -- better repeat
   use({ "tpope/vim-surround" }) -- add surrounding tags and stuff
-  use({ "tpope/vim-eunuch" })   -- Adds :Rename, :SudoWrite
+  use({ "tpope/vim-eunuch" })  -- Adds :Rename, :SudoWrite
 
   -- Colorschemes
   use({ "folke/tokyonight.nvim" })
@@ -116,26 +116,29 @@ return packer.startup(function(use)
   use({ "aoeivux/base46.nvim" })
 
   -- Jupyter stuff
-  use({ "goerz/jupytext.vim" })                 --text .ipynb files
-  use({ "kana/vim-textobj-user" })              --hydrogen dependency
+  use({ "goerz/jupytext.vim" })                --text .ipynb files
+  use({ "kana/vim-textobj-user" })             --hydrogen dependency
   use({ "GCBallesteros/vim-textobj-hydrogen" }) --create objects for cells like vih to select cell
-  use({ "untitled-ai/jupyter_ascending.vim" })  -- sync notebook with files
-
+  use({ "untitled-ai/jupyter_ascending.vim" }) -- sync notebook with files
 
   -- -- GitHub Copilot
-  use({ "zbirenbaum/copilot.lua" })
+  use({
+    "zbirenbaum/copilot.lua",
+  })
+  -- copilot-cmp breaks when trying to move it to plugins/copilot.lua
   use({
     "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
+    -- after = { "copilot.lua" },
     config = function()
       require("copilot_cmp").setup()
     end,
   })
-
   --lsp
   use({ "williamboman/mason.nvim" })
   use({ "williamboman/mason-lspconfig.nvim" })
+  use({ "jay-babu/mason-null-ls.nvim" })
   use({ "neovim/nvim-lspconfig" })
+  use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
   --completions
   use({ "hrsh7th/cmp-nvim-lsp" })
@@ -156,6 +159,15 @@ return packer.startup(function(use)
   --niceties
   use({ "RRethy/vim-illuminate" })
   use({ "folke/neodev.nvim" }) --nvim lua lsp, docs, help and completion
+
+  use({
+    "jackMort/ChatGPT.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  })
 
   ----------------
   -- Config editing functions

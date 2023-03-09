@@ -28,24 +28,18 @@ end
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 
--- Comment
--- TODO: Not sure what this is.. Came from nvim-
--- map("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",)
--- map("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
-
-local opts = {}
-
 -----------------------------------------------------------
 -- Nvim controls
 ----------------------------------------------------------
 
 -- Reload nvim config
 map("n", "<leader>R", ":source ~/.config/nvim/init.lua<CR>")
+
 -- Fast saving with <leader> and w
 map("n", "<leader>w", ":w<CR>")
 
 -- fast exiting buffer
-map("n", "<leader>q", ":Bdelete!<CR>")
+map("n", "<leader>q", ":Bwipeout<CR>")
 
 -- Close all windows and exit from Neovim with <leader> and q
 map("n", "<leader>Q", ":qa!<CR>")
@@ -75,8 +69,9 @@ map("n", "gg", "ggzz")
 
 -- Map Esc to kk and jj
 -- map("i", "kk", "<Esc>") --This one is causing freezes for some reason
-map("i", "jj", "<Esc>")
+map("i", "jj", "<ESC>")
 map("i", "jk", "<ESC>")
+map("i", "kk", "<ESC>")
 
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", ":noh <CR>")
@@ -142,15 +137,17 @@ map("n", "<leader>i", ":TypescriptAddMissingImports<CR>")
 map("n", "<leader>io", ":TypescriptOrganizeImports<CR>")
 
 -- ToggleTerm
-map("n", "<F1>", ":ToggleTerm cd %:p:h <CR>")
-map("t", "<F1>", "<C-\\><C-n>:ToggleTerm<CR>")
 map("n", "<F2>", "2:ToggleTerm cd %:p:h <CR>")
+map("i", "<F2>", "2:ToggleTerm cd %:p:h <CR>")
 map("t", "<F2>", "<C-\\><C-n>:ToggleTerm<CR>")
+
 map("n", "<F3>", "3:ToggleTerm cd %:p:h <CR>")
+map("i", "<F3>", "3:ToggleTerm cd %:p:h <CR>")
 map("t", "<F3>", "<C-\\><C-n>:ToggleTerm<CR>")
+
 map("n", "<F4>", "4:ToggleTerm cd %:p:h <CR>")
+map("i", "<F4>", "4:ToggleTerm cd %:p:h <CR>")
 map("t", "<F4>", "<C-\\><C-n>:ToggleTerm<CR>")
--- map("t", "<ESC>", "<C-\\><C-n>:ToggleTerm<CR>")
 
 -- Telescope
 map("n", "<leader>ft", ":Telescope <CR>")                                        -- find telescope commands

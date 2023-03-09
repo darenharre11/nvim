@@ -1,11 +1,17 @@
 local status_ok, lspconfig = pcall(require, "lspconfig")
-
 if not status_ok then
   return
 end
 
+local null_status_ok, null_ls = pcall(require, "null-ls")
+if not null_status_ok then
+  return
+end
+
 ------------------
--- Mason
+------------------
+---- Mason
+------------------
 ------------------
 
 require("mason").setup({
@@ -13,9 +19,11 @@ require("mason").setup({
     icons = {
       package_installed = "✓",
       package_pending = "➜",
-      package_uninstalled = "✗"
-    }
-  }
+      package_uninstalled = "✗",
+    },
+  },
+  log_level = vim.log.levels.INFO,
+  max_concurrent_installers = 4,
 })
 
 local servers = {
@@ -31,57 +39,86 @@ local servers = {
 
 require("mason-lspconfig").setup({
   ensure_installed = servers,
-  automatic_installation = true
+  automatic_installation = true,
 })
 
-
-
 ------------------
--- Mappings
+------------------
+---- Mappings
+------------------
 ------------------
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
 local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
--- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "<space>d", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+--  vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set("n", "<space>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+  vim.keymap.set("n", "<space>fm", function()
+    vim.lsp.buf.format({ async = true })
+  end, bufopts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 ------------------
--- Configs
+------------------
+---- Configs
+------------------
 ------------------
 
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 require("neodev").setup({})
 
+----
+---- Null-ls
+----
+null_ls.setup({
+  debug = false,
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.completion.spell,
+    null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.formatting.black,
+  },
+})
+
+require("mason-null-ls").setup({
+  ensure_installed = { "stylua", "jq" },
+  automatic_installation = true,
+  automatic_setup = true,
+})
+
+----
+---- ????
+----
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
   vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
@@ -94,7 +131,10 @@ local enable_format_on_save = function(_, bufnr)
   })
 end
 
-lspconfig.lua_ls.setup {
+----
+---- Setup servers
+----
+lspconfig.lua_ls.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
@@ -104,52 +144,60 @@ lspconfig.lua_ls.setup {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
+        globals = { "vim" },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false
+        checkThirdParty = false,
       },
     },
   },
-}
-
+})
 
 lspconfig.pyright.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  settings = {},
+  filetypes = { "python", "python3" },
+  -- settings = {},
 })
 
-lspconfig.tsserver.setup {
+-- pyright is better than jedi
+-- lspconfig.jedi_language_server.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "python", "python3" },
+-- }
+
+lspconfig.tsserver.setup({
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
-}
+  capabilities = capabilities,
+})
 
-lspconfig.tailwindcss.setup {
+lspconfig.tailwindcss.setup({
   on_attach = on_attach,
-  capabilities = capabilities
-}
+  capabilities = capabilities,
+})
 
 ------------------
--- Handlers
+------------------
+---- Handlers
+------------------
 ------------------
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    update_in_insert = false,
-    virtual_text = { spacing = 4, prefix = "●" },
-    severity_sort = true,
-  }
-)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  update_in_insert = false,
+  virtual_text = { spacing = 4, prefix = "●" },
+  severity_sort = true,
+})
 
-
+------------------
 ------------------
 -- Diagnotics
+------------------
 ------------------
 
 -- Diagnostic symbols in the sign column (gutter)
@@ -161,7 +209,7 @@ end
 
 vim.diagnostic.config({
   virtual_text = {
-    prefix = '●'
+    prefix = "●",
   },
   update_in_insert = true,
   float = {

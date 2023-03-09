@@ -1,18 +1,23 @@
-local wilder = require('wilder')
-wilder.setup({ modes = { ':', '/', '?' } })
+local status_ok, wilder = pcall(require, "wilder")
 
-wilder.set_option('pipeline', {
+if not status_ok then
+  return
+end
+
+wilder.setup({ modes = { ":", "/", "?" } })
+
+wilder.set_option("pipeline", {
   wilder.branch(
     wilder.python_file_finder_pipeline({
       file_command = function(ctx, arg)
-        if string.find(arg, '.') ~= nil then
-          return { 'fdfind', '-tf', '-H' }
+        if string.find(arg, ".") ~= nil then
+          return { "fdfind", "-tf", "-H" }
         else
-          return { 'fdfind', '-tf' }
+          return { "fdfind", "-tf" }
         end
       end,
-      dir_command = { 'fd', '-td' },
-      filters = { 'cpsm_filter' },
+      dir_command = { "fd", "-td" },
+      filters = { "cpsm_filter" },
     }),
     wilder.substitute_pipeline({
       pipeline = wilder.python_search_pipeline({
@@ -27,7 +32,9 @@ wilder.set_option('pipeline', {
       fuzzy_filter = wilder.lua_fzy_filter(),
     }),
     {
-      wilder.check(function(ctx, x) return x == '' end),
+      wilder.check(function(ctx, x)
+        return x == ""
+      end),
       wilder.history(),
     },
     wilder.python_search_pipeline({
@@ -43,41 +50,42 @@ local highlighters = {
   wilder.lua_fzy_highlighter(),
 }
 
-local popupmenu_renderer = wilder.popupmenu_renderer(
-  wilder.popupmenu_border_theme({
-    border = 'single', -- 'single', 'double', 'rounded' or 'solid'
-    highlights = {
-      border = "Floatborder"
-    },
-    min_width = '15%',     -- minimum height of the popupmenu, can also be a number
-    min_height = '30%',     -- to set a fixed height, set max_height to the same value
-    reverse = 1,            -- if 1, shows the candidates from bottom to top
-    empty_message = wilder.popupmenu_empty_message_with_spinner(),
-    highlighter = highlighters,
-    left = {
-      ' ',
-      wilder.popupmenu_devicons(),
-      wilder.popupmenu_buffer_flags({
-        flags = ' a + ',
-        icons = { ['+'] = '', a = '', h = '' },
-      }),
-    },
-    right = {
-      ' ',
-      wilder.popupmenu_scrollbar(),
-    },
-  })
-)
+local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
+  border = "single", -- 'single', 'double', 'rounded' or 'solid'
+  highlights = {
+    border = "Floatborder",
+  },
+  min_width = "15%", -- minimum height of the popupmenu, can also be a number
+  min_height = "30%", -- to set a fixed height, set max_height to the same value
+  reverse = 1,       -- if 1, shows the candidates from bottom to top
+  empty_message = wilder.popupmenu_empty_message_with_spinner(),
+  highlighter = highlighters,
+  left = {
+    " ",
+    wilder.popupmenu_devicons(),
+    wilder.popupmenu_buffer_flags({
+      flags = " a + ",
+      icons = { ["+"] = "", a = "", h = "" },
+    }),
+  },
+  right = {
+    " ",
+    wilder.popupmenu_scrollbar(),
+  },
+}))
 
 local wildmenu_renderer = wilder.wildmenu_renderer({
   highlighter = highlighters,
-  separator = ' · ',
-  left = { ' ', wilder.wildmenu_spinner(), ' ' },
-  right = { ' ', wilder.wildmenu_index() },
+  separator = " · ",
+  left = { " ", wilder.wildmenu_spinner(), " " },
+  right = { " ", wilder.wildmenu_index() },
 })
 
-wilder.set_option('renderer', wilder.renderer_mux({
-      [':'] = popupmenu_renderer,
-      ['/'] = wildmenu_renderer,
-  substitute = wildmenu_renderer,
-}))
+wilder.set_option(
+  "renderer",
+  wilder.renderer_mux({
+        [":"] = popupmenu_renderer,
+        ["/"] = wildmenu_renderer,
+    substitute = wildmenu_renderer,
+  })
+)

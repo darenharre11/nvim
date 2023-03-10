@@ -9,7 +9,6 @@ vim.opt.mouse = "a"                             -- Enable mouse support
 vim.opt.clipboard = "unnamedplus"               -- Copy/paste to system clipboard
 vim.opt.swapfile = false                        -- Don't use swapfile
 vim.opt.completeopt = "menu,menuone,noselect"   -- Autocomplete options
-vim.opt.clipboard = "unnamedplus"               -- Use linux system clipboard
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
 vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
@@ -19,7 +18,6 @@ vim.opt.pumheight = 10                          -- pop up menu height
 vim.opt.showtabline = 0                         -- always show tabs
 vim.opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true                         -- enable persistent undo
-vim.opt.undodir = "~/.vim/undo"
 vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.laststatus = 3                          -- only the last window will always have a status line
@@ -32,7 +30,6 @@ vim.opt.shortmess:append("c")                   -- hide all the completion messa
 vim.opt.whichwrap:append("<,>,[,],h,l")         -- keys allowed to move to the previous/next line when the beginning/end of line is reached
 vim.opt.iskeyword:append("-")                   -- treats words with `-` as single words
 vim.opt.formatoptions:remove({ "c", "r", "o" }) -- This is a sequence of letters which describes how automatic formatting is to be done
-
 
 -----------------------------------------------------------
 -- Neovim UI

@@ -80,7 +80,7 @@ return packer.startup(function(use)
   use({ "JoosepAlviste/nvim-ts-context-commentstring" }) --Apply appropriate comments based on where you are in file, not just filetype
   use({ "jose-elias-alvarez/typescript.nvim" })         -- Typescript utils
   use({ "folke/which-key.nvim" })                       -- keymap reminder window
-  -- use({ "farmergreg/vim-lastplace" })                    -- move to last place when opening file
+  use({ "farmergreg/vim-lastplace" })                   -- move to last place when opening file
   use({ "Pocco81/auto-save.nvim" })                     -- because im lazy
   use({ "famiu/bufdelete.nvim" })                       -- because im
   use({ "gcmt/wildfire.vim" })                          -- select the closest text object among a group of candidatee
@@ -162,6 +162,11 @@ return packer.startup(function(use)
 
   use({
     "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup({
+        -- optional configuration
+      })
+    end,
     requires = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",

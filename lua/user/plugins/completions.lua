@@ -89,7 +89,13 @@ cmp.setup({
     { name = "luasnip",  group_index = 2 },
     { name = "nvim_lua", group_index = 2 },
     { name = "buffer",   keyword_length = 2, max_item_count = 1 },
-    { name = "emoji",    insert = true },
+    {
+      name = "cmdline",
+      option = {
+        ignore_cmds = { "Man", "!" },
+      },
+    },
+    { name = "emoji", insert = true },
   },
   completion = {
     keyword_length = 1,
@@ -139,4 +145,19 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
+})
+
+-- `:` cmdline setup.
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "path" },
+  }, {
+    {
+      name = "cmdline",
+      option = {
+        ignore_cmds = { "Man", "!" },
+      },
+    },
+  }),
 })

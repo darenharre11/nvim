@@ -97,9 +97,9 @@ map("x", "<A-j>", ":move '>+1<CR>gv-gv")
 map("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
 -- paste no matter what
-map("n", "p", "\"0p")
-map("v", "p", "\"0p")
-map("x", "p", "\"0p")
+map("n", "p", '"0p')
+map("v", "p", '"0p')
+map("x", "p", '"0p')
 
 -----------------------------------------------------------
 -- Buffer Splits and Controls
@@ -150,17 +150,17 @@ map("i", "<F4>", "4:ToggleTerm cd %:p:h <CR>")
 map("t", "<F4>", "<C-\\><C-n>:ToggleTerm<CR>")
 
 -- Telescope
-map("n", "<leader>ft", ":Telescope <CR>")                                        -- find telescope commands
-map("n", "<leader>ff", ":Telescope git_files<CR>")                               -- find files in git repo
-map("n", "<leader>fh", ":Telescope oldfiles<CR>")                                -- find recently opened files
-map("n", "<leader>fb", ":Telescope buffers<CR>")                                 -- find buffers
-map("n", "<leader>fl", ":Telescope current_buffer_fuzzy_find<CR>")               -- find in current buffer
-map("n", "<leader>fg", ":Telescope live_grep<CR>")                               -- find in files
-map("n", "<leader>fk", ":Telescope keymaps<CR>")                                 -- find keymaps
-map("n", "<leader>fp", ":Telescope projects<CR>")                                -- find recently opened git projects
-map("n", "<leader>fi", ":Telescope highlights<CR>")                              -- find nvim highlights
-map("n", "<leader>fu", ":lua require(\"telescope\").extensions.undo.undo()<CR>") -- review previous undo logs
-map("n", "<leader>fn", ":Telescope notify<CR>")                                  -- review all notifications
+map("n", "<leader>ft", ":Telescope <CR>")                                      -- find telescope commands
+map("n", "<leader>ff", ":Telescope git_files<CR>")                             -- find files in git repo
+map("n", "<leader>fh", ":Telescope oldfiles<CR>")                              -- find recently opened files
+map("n", "<leader>fb", ":Telescope buffers<CR>")                               -- find buffers
+map("n", "<leader>fl", ":Telescope current_buffer_fuzzy_find<CR>")             -- find in current buffer
+map("n", "<leader>fg", ":Telescope live_grep<CR>")                             -- find in files
+map("n", "<leader>fk", ":Telescope keymaps<CR>")                               -- find keymaps
+map("n", "<leader>fp", ":Telescope projects<CR>")                              -- find recently opened git projects
+map("n", "<leader>fi", ":Telescope highlights<CR>")                            -- find nvim highlights
+map("n", "<leader>fu", ':lua require("telescope").extensions.undo.undo()<CR>') -- review previous undo logs
+map("n", "<leader>fn", ":Telescope notify<CR>")                                -- review all notifications
 
 -- Which key
 map("n", "<leader>k", ":WhichKey<CR>")
@@ -179,3 +179,6 @@ map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>")
 
 -- Mundo.vim
 map("n", "<leader>u", ":MundoToggle<CR>")
+
+-- ChatGPT.nvim
+map("n", "<leader>g", ":ChatGPT<CR>")

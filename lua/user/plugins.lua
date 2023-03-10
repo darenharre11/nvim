@@ -160,20 +160,6 @@ return packer.startup(function(use)
   use({ "RRethy/vim-illuminate" })
   use({ "folke/neodev.nvim" }) --nvim lua lsp, docs, help and completion
 
-  use({
-    "jackMort/ChatGPT.nvim",
-    config = function()
-      require("chatgpt").setup({
-        -- optional configuration
-      })
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  })
-
   ----------------
   -- Config editing functions
   ----------------

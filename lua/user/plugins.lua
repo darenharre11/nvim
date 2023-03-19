@@ -92,6 +92,7 @@ return packer.startup(function(use)
   use({ "moll/vim-bbye" })                              -- Bbye allows you to do delete buffers (close files) without closing your windows or messing up your layout.
   use({ "d10n/vim-toggle-help" })                       -- add a toggler for the help window
   use({ "dstein64/vim-startuptime" })                   -- plugin to visualize status up time.. :StartupTime
+  use({ "windwp/nvim-ts-autotag" })
 
   -- --wilder
   -- use({ "gelguy/wilder.nvim" })    -- a better wildmenu (:command auto completion)
@@ -159,6 +160,16 @@ return packer.startup(function(use)
   --niceties
   use({ "RRethy/vim-illuminate" })
   use({ "folke/neodev.nvim" }) --nvim lua lsp, docs, help and completion
+
+  -- markdown preview
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  })
 
   ----------------
   -- Config editing functions

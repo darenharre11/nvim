@@ -63,6 +63,9 @@ vim.cmd([[
 ]])
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.api.nvim_set_hl(0, "CmpItemKindModule", { fg = "#a48ec7" })
+vim.api.nvim_set_hl(0, "CmpItemKindFolder", { fg = "#B3E369" })
+vim.api.nvim_set_hl(0, "CmpItemKindFile", { fg = "#B3E369" })
+vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#9CDCFE" })
 
 -- LSP colors
 vim.api.nvim_set_hl(0, "LspReferenceText", { bg = generic_colors.dark_offset })

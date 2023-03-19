@@ -96,28 +96,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require("neodev").setup({})
 
 ----
----- Null-ls
-----
-null_ls.setup({
-  debug = false,
-  sources = {
-    null_ls.builtins.formatting.stylua,
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.completion.spell,
-    null_ls.builtins.diagnostics.flake8,
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.black,
-  },
-})
-
-require("mason-null-ls").setup({
-  ensure_installed = { "stylua", "jq" },
-  automatic_installation = true,
-  automatic_setup = true,
-})
-
-----
----- ????
+---- Formatting ????
 ----
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
@@ -130,6 +109,27 @@ local enable_format_on_save = function(_, bufnr)
     end,
   })
 end
+
+----
+---- Null-ls
+----
+null_ls.setup({
+  debug = false,
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.eslint,
+    -- null_ls.builtins.completion.spell,
+    null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.formatting.black,
+  },
+})
+
+require("mason-null-ls").setup({
+  ensure_installed = { "stylua", "jq" },
+  automatic_installation = true,
+  automatic_setup = true,
+})
 
 ----
 ---- Setup servers
@@ -179,6 +179,20 @@ lspconfig.tsserver.setup({
 lspconfig.tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+})
+
+lspconfig.emmet_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ["bem.enabled"] = true,
+      },
+    },
+  },
 })
 
 ------------------

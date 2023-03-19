@@ -61,34 +61,34 @@ cmp.setup({
     },
   },
   mapping = cmp.mapping.preset.insert({
-        ["<Tab>"] = function(fallback)
+    ["<Tab>"] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       else
         fallback()
       end
     end,
-        ["<S-Tab>"] = function(fallback)
+    ["<S-Tab>"] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       else
         fallback()
       end
     end,
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<C-Esc>"] = cmp.mapping.close(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
+    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<C-Esc>"] = cmp.mapping.close(),
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
   }),
   sources = {
-    { name = "copilot",  group_index = 2 },
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "path" },
+    { name = "copilot",  group_index = 1 },
+    { name = "nvim_lsp", group_index = 1 },
     { name = "luasnip",  group_index = 2 },
     { name = "nvim_lua", group_index = 2 },
-    { name = "buffer",   keyword_length = 2, max_item_count = 1 },
+    { name = "path",     group_index = 3 },
+    -- { name = "buffer",   keyword_length = 2, max_item_count = 1, group_index = 3 },
     {
       name = "cmdline",
       option = {
@@ -99,7 +99,8 @@ cmp.setup({
   },
   completion = {
     keyword_length = 1,
-    completeopt = "menu,noselect",
+    -- completeopt = "menu,noselect",
+    completeopt = "noselect, menuone, preview",
   },
   view = {
     entries = "custom",
@@ -113,11 +114,11 @@ cmp.setup({
     format = function(entry, vim_item)
       -- Source
       vim_item.menu = ({
-            buffer = "[Buffer]",
-            nvim_lsp = "[LSP]",
-            luasnip = "[LuaSnip]",
-            nvim_lua = "[Lua]",
-          })[entry.source.name]
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+      })[entry.source.name]
 
       -- Kind icons
       vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind

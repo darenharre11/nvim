@@ -38,11 +38,11 @@ local spaces = function()
   return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
-lualine.setup {
+lualine.setup({
   options = {
     globalstatus = true,
     icons_enabled = true,
-    theme = "onedark",
+    theme = "kanagawa",
     component_separators = { left = " ", right = " " },
     section_separators = { left = " ", right = " " },
     disabled_filetypes = { "alpha", "dashboard" },
@@ -50,10 +50,10 @@ lualine.setup {
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = {"branch"},
+    lualine_b = { "branch" },
     lualine_c = { diagnostics },
     lualine_x = { diff, spaces, "encoding", filetype },
     lualine_y = { location },
     lualine_z = { "progress" },
   },
-}
+})

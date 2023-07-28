@@ -38,22 +38,17 @@ local generic_colors = {
 --  see https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-theme_colors.to-the-menu
 vim.cmd([[
   highlight! link CmpItemMenu Comment
-  " gray
   highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
-  " blue
   highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
   highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
-  " light blue
   highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
   highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
   highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
   highlight! CmpItemKindField guibg=NONE guifg=#9CDCFE
   highlight! CmpItemKindSnippet guibg=NONE guifg=#ff9942
   highlight! CmpItemKindEnum guibg=NONE guifg=#B3E369
-  " pink
   highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
   highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
-  " front
   highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
   highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
   highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
@@ -76,9 +71,9 @@ vim.api.nvim_set_hl(0, "FloatBorder", { fg = generic_colors.dark_offset, bg = ge
 
 vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { fg = theme_colors.pink })
 
---wilder colors
--- vim.api.nvim_set_hl(0, "WilderPoppupMenuAccent", { fg = theme_colors.sun, bg = theme_colors.sun })
--- vim.api.nvim_set_hl(0, "WilderPopupMenuAccent", { fg = theme_colors.sun, bg = theme_colors.sun })
+-- wilder colors
+vim.api.nvim_set_hl(0, "WilderPoppupMenuAccent", { fg = theme_colors.sun, bg = theme_colors.sun })
+vim.api.nvim_set_hl(0, "WilderPopupMenuAccent", { fg = theme_colors.sun, bg = theme_colors.sun })
 
 -- bufferline.nvim
 vim.api.nvim_set_hl(0, "BufferLineFill", { bg = theme_colors.one_bg })

@@ -87,11 +87,14 @@ return packer.startup(function(use)
   -- use({ "christoomey/vim-tmux-navigator" })             -- also install in tmux
   use({ "MunifTanjim/nui.nvim" })                       -- noice requirement
   use({ "folke/noice.nvim" })                           -- a bunch of stuff like, messages to notify.nvim, signature help, :command prompt and more
-  use({ "chrisgrieser/nvim-recorder" })                 -- better macro experience. useful with noice since cmd bottom bar goes away.plugins
-  use({ "simnalamburt/vim-mundo" })                     -- undo ui
-  use({ "moll/vim-bbye" })                              -- Bbye allows you to do delete buffers (close files) without closing your windows or messing up your layout.
-  use({ "d10n/vim-toggle-help" })                       -- add a toggler for the help window
-  use({ "dstein64/vim-startuptime" })                   -- plugin to visualize status up time.. :StartupTime
+  use({
+    "chrisgrieser/nvim-recorder",
+    requires = "rcarriga/nvim-notify", -- optional
+  })                                 -- better macro experience. useful with noice since cmd bottom bar goes away.plugins
+  use({ "simnalamburt/vim-mundo" })  -- undo ui
+  use({ "moll/vim-bbye" })           -- Bbye allows you to do delete buffers (close files) without closing your windows or messing up your layout.
+  use({ "d10n/vim-toggle-help" })    -- add a toggler for the help window
+  use({ "dstein64/vim-startuptime" }) -- plugin to visualize status up time.. :StartupTime
   use({ "windwp/nvim-ts-autotag" })
 
   -- --wilder
@@ -134,6 +137,7 @@ return packer.startup(function(use)
       require("copilot_cmp").setup()
     end,
   })
+
   --lsp
   use({ "williamboman/mason.nvim" })
   use({ "williamboman/mason-lspconfig.nvim" })

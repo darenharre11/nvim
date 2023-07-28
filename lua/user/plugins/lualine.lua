@@ -42,7 +42,7 @@ lualine.setup({
   options = {
     globalstatus = true,
     icons_enabled = true,
-    theme = "kanagawa",
+    -- theme = "kanagawa", -- theme is not found and throwing notices in :LualineNotices..
     component_separators = { left = " ", right = " " },
     section_separators = { left = " ", right = " " },
     disabled_filetypes = { "alpha", "dashboard" },

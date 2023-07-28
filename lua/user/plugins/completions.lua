@@ -125,10 +125,10 @@ cmp.setup({
 
       -- vim_item.dup = 0
       vim_item.dup = ({
-            buffer = 1,
-            path = 1,
-            nvim_lsp = 0,
-          })[entry.source.name] or 0
+        buffer = 1,
+        path = 1,
+        nvim_lsp = 0,
+      })[entry.source.name] or 0
 
       return vim_item
     end,

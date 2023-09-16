@@ -5,6 +5,8 @@ if not present then
   return
 end
 
+vim.cmd([[colorscheme kanagawa]])
+
 local theme = "kanagawa"
 local color_base = "base46"
 
@@ -13,13 +15,12 @@ if not status_ok then
   return
 end
 
-local theme_opts = {
-  base = color_base,
-  theme = theme,
-  transparency = false,
-}
-
-base46.load_theme(theme_opts)
+-- local theme_opts = {
+--   base = color_base,
+--   theme = theme,
+--   transparency = false,
+-- }
+-- base46.load_theme(theme_opts)
 
 ------------------------------
 ---- Polishing some hightlights, overwriting base46
@@ -94,4 +95,4 @@ vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { fg = theme_colors.pink }
 
 -- noice.nvim
 vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = generic_colors.dark_offset })
-vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = generic_colors.dark_offset, bg = generic_colors.dark_offset })
+vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = generic_colors.dark_offset, bg = generic_colors.dark_offse })

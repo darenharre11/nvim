@@ -14,18 +14,18 @@ vim.g.copilot_node_command = "~/.nvm/versions/node/v17.0.1/bin/node"
 
 copilot.setup({
   panel = {
-    enabled = false,
-    auto_refresh = false,
+    enabled = true,
+    auto_refresh = true,
     keymap = {
       jump_prev = "[[",
       jump_next = "]]",
       accept = "<CR>",
       refresh = "gr",
-      open = "<M-CR>"
+      open = "<M-CR>",
     },
   },
   suggestion = {
-    enabled = false,
+    enabled = true,
     auto_trigger = false,
     debounce = 75,
     keymap = {
@@ -36,8 +36,8 @@ copilot.setup({
     },
   },
   filetypes = {
-        ["*"] = true,
-        ["."] = true,
+    ["*"] = true,
+    ["."] = true,
     yaml = false,
     markdown = false,
     help = false,
@@ -47,13 +47,13 @@ copilot.setup({
     svn = false,
     cvs = false,
     sh = function()
-      if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
+      if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), "^%.env.*") then
         -- disable for .env files
         return false
       end
       return true
     end,
   },
-  copilot_node_command = 'node', -- Node version must be < 18
+  copilot_node_command = "node", -- Node version must be < 18
   server_opts_overrides = {},
 })

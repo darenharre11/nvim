@@ -1,26 +1,16 @@
 --used with aoeivux/base46.nvim
 
-local present, base46 = pcall(require, "base46")
-if not present then
-  return
-end
-
-vim.cmd([[colorscheme kanagawa]])
+-- local present, base46 = pcall(require, "base46")
+-- if not present then
+--   return
+-- end
 
 local theme = "kanagawa"
-local color_base = "base46"
 
 local status_ok, theme_file = pcall(require, "user.themes." .. theme)
 if not status_ok then
   return
 end
-
--- local theme_opts = {
---   base = color_base,
---   theme = theme,
---   transparency = false,
--- }
--- base46.load_theme(theme_opts)
 
 ------------------------------
 ---- Polishing some hightlights, overwriting base46
@@ -36,6 +26,7 @@ local generic_colors = {
 }
 
 -- cmp colors
+-- TODO: Re-write this in lua
 --  see https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-theme_colors.to-the-menu
 vim.cmd([[
   highlight! link CmpItemMenu Comment
@@ -66,10 +57,8 @@ vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#9CDCFE" })
 -- LSP colors
 vim.api.nvim_set_hl(0, "LspReferenceText", { bg = generic_colors.dark_offset })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = generic_colors.dark_offset })
--- vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#6c6c94", bg = "#13131a" })
 vim.api.nvim_set_hl(0, "NormalFloat", { fg = generic_colors.white_offset, bg = generic_colors.dark_offset })
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = generic_colors.dark_offset, bg = generic_colors.dark_offset })
-
 vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { fg = theme_colors.pink })
 
 -- wilder colors
@@ -86,7 +75,8 @@ vim.api.nvim_set_hl(0, "BufferLineDevIconDefaultInactive", { bg = theme_colors.d
 -- telescope.nvim
 vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = theme_colors.statusline_bg, bg = theme_colors.statusline_bg })
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = theme_colors.black2, bg = theme_colors.black2 })
-vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = theme_colors.darker_black, bg = theme_colors.darker_black })
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = theme_colors.black2 })
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = theme_colors.black, bg = theme_colors.black })
 vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = theme_colors.darker_black, bg = theme_colors.darker_black })
 vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = theme_colors.darker_black })
 
@@ -96,3 +86,5 @@ vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { fg = theme_colors.pink }
 -- noice.nvim
 vim.api.nvim_set_hl(0, "NoiceCmdlinePopup", { bg = generic_colors.dark_offset })
 vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { fg = generic_colors.dark_offset, bg = generic_colors.dark_offse })
+
+vim.cmd([[colorscheme kanagawa]])

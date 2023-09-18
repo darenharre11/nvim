@@ -117,7 +117,9 @@ return packer.startup(function(use)
   use({ "norcalli/nvim-base16.lua" })
 
   --Theme helpers (for plugins like telescope)
-  use({ "aoeivux/base46.nvim" })
+  -- ! This messess with syntax highlighting in a negative way.
+  -- use({ "aoeivux/base46.nvim" })
+  -- use({ "darenharre11/base46.nvim" })
 
   -- Jupyter stuff
   use({ "goerz/jupytext.vim" })                --text .ipynb files
@@ -150,7 +152,15 @@ return packer.startup(function(use)
   use({ "hrsh7th/cmp-buffer" })
   use({ "hrsh7th/cmp-path" })
   use({ "hrsh7th/cmp-cmdline" })
-  use({ "hrsh7th/nvim-cmp" })
+  use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lsp",
+    },
+  })
   use({ "ray-x/cmp-treesitter" })
   -- use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
   -- use({ "ray-x/lsp_signature.nvim" })

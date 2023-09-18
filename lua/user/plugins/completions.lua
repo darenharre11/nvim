@@ -43,14 +43,14 @@ cmp.setup({
     end,
   },
   sorting = {
-    priority_weight = 2,
+    priority_weight = 1,
     comparators = {
       require("copilot_cmp.comparators").prioritize,
 
       -- Below is the default comparitor list and order for nvim-cmp
-      cmp.config.compare.offset,
-      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-      cmp.config.compare.exact,
+      -- cmp.config.compare.offset,
+      -- cmp.config.compare.scopes,
+      -- cmp.config.compare.exact,
       cmp.config.compare.score,
       cmp.config.compare.recently_used,
       cmp.config.compare.locality,
@@ -83,22 +83,24 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
   }),
   sources = {
-    { name = "copilot",  group_index = 1 },
-    { name = "nvim_lsp", group_index = 1 },
-    { name = "luasnip",  group_index = 2 },
-    { name = "nvim_lua", group_index = 2 },
-    { name = "path",     group_index = 3 },
-    -- { name = "buffer",   keyword_length = 2, max_item_count = 1, group_index = 3 },
+    { name = "copilot",  priority = 1000 },
+    { name = "nvim_lsp", priority = 900 },
+    { name = "luasnip",  priority = 800 },
+    { name = "nvim_lua", priority = 700 },
+    { name = "buffer",   priority = 600, keyword_length = 4 },
+    { name = "path",     priority = 500 },
     {
       name = "cmdline",
       option = {
         ignore_cmds = { "Man", "!" },
       },
+      priority = 100,
+      max_item_count = 4,
     },
-    { name = "emoji", insert = true },
+    { name = "emoji", priority = 300, max_item_count = 4, insert = true },
   },
   completion = {
-    keyword_length = 1,
+    keyword_length = 3,
     -- completeopt = "menu,noselect",
     completeopt = "noselect, menuone, preview",
   },
@@ -118,6 +120,10 @@ cmp.setup({
         nvim_lsp = "[LSP]",
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
+        path = "[Path]",
+        copilot = "[Copilot]",
+        cmdline = "[Cmdline]",
+        emoji = "[Emoji]",
       })[entry.source.name]
 
       -- Kind icons
@@ -149,16 +155,16 @@ cmp.setup({
 })
 
 -- `:` cmdline setup.
-cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = "path" },
-  }, {
-    {
-      name = "cmdline",
-      option = {
-        ignore_cmds = { "Man", "!" },
-      },
-    },
-  }),
-})
+-- cmp.setup.cmdline(":", {
+--   mapping = cmp.mapping.preset.cmdline(),
+--   sources = cmp.config.sources({
+--     { name = "path" },
+--   }, {
+--     {
+--       name = "cmdline",
+--       option = {
+--         ignore_cmds = { "Man", "!" },
+--       },
+--     },
+--   }),
+-- })

@@ -1,0 +1,1 @@
+/home/daren/.config/omarchy/current/theme/neovim.lua

@@ -84,6 +84,12 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("i", ";;", "<Esc>A;<Esc>")
 vim.keymap.set("i", ",,", "<Esc>A,<Esc>")
 
+-- paste no matter what
+vim.keymap.set("n", "p", '"0p')
+vim.keymap.set("v", "p", '"0p')
+vim.keymap.set("x", "p", '"0p')
+
+-- Replaced by LazyVim defaults
 -- -- Move text up and down
 -- vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
 -- vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
@@ -91,11 +97,6 @@ vim.keymap.set("i", ",,", "<Esc>A,<Esc>")
 -- vim.keymap.set("i", "<A-k>", "<Esc>:move .-2<CR>==gi")
 -- vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv")
 -- vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv")
-
--- paste no matter what
-vim.keymap.set("n", "p", '"0p')
-vim.keymap.set("v", "p", '"0p')
-vim.keymap.set("x", "p", '"0p')
 
 -----------------------------------------------------------
 -- Buffer Splits and Controls

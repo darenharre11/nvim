@@ -43,7 +43,7 @@ vim.opt.number = true -- Show line number
 vim.opt.relativenumber = true -- Make line number relative
 vim.opt.showmatch = true -- Highlight matching parenthesis
 vim.opt.foldmethod = "marker" -- Enable folding (default 'foldmarker')
-vim.opt.colorcolumn = "80" -- Line lenght marker at 80 columns
+vim.opt.colorcolumn = "130" -- Line lenght marker at 80 columns
 vim.opt.splitright = true -- Vertical split to the right
 vim.opt.splitbelow = true -- Orizontal split to the bottom
 vim.opt.ignorecase = true -- Ignore case letters when search
@@ -73,7 +73,7 @@ vim.opt.sidescrolloff = 8 -- the side of the window
 vim.opt.wrap = true        -- Wrap lines
 vim.opt.linebreak = true   -- Wrap on word boundary
 vim.opt.showbreak = ">>"   -- Show characters on broken line
-vim.opt.textwidth = 80     -- Break at this amount
+vim.opt.textwidth = 130    -- Break at this amount
 vim.opt.breakindent = true -- Indent wrapped line
 
 -----------------------------------------------------------

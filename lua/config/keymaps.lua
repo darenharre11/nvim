@@ -1,7 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 -----------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
@@ -29,19 +25,10 @@ vim.g.mapleader = " "
 ----------------------------------------------------------
 
 -- Reload nvim config
-vim.keymap.set("n", "<leader>R", ":source ~/.config/nvim/init.lua<CR>")
+-- vim.keymap.set("n", "<leader>R", ":source ~/.config/nvim/init.lua<CR>")
 
 -- Fast saving with <leader> and w
 vim.keymap.set("n", "<leader>ww", ":w<CR>")
-
--- fast exiting buffer
-vim.keymap.set("n", "<leader>q", function() Snacks.bufdelete() end)
-
--- Close all windows and exit from Neovim with <leader> and q
-vim.keymap.set("n", "<leader>Q", ":qa!<CR>")
-
--- Edit your nvim config
-vim.keymap.set("n", "<leader>;", ":e $MYVIMRC <CR>")
 
 -- close all buffers except the current
 vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" }) -- https://stackoverflow.com/a/42071865/516188
@@ -103,8 +90,9 @@ vim.keymap.set("x", "p", '"0p')
 -----------------------------------------------------------
 
 -- easy splits
-vim.keymap.set("n", "<leader>V", ":vsp<CR>")
-vim.keymap.set("n", "<leader>P", ":sp<CR>")
+-- just use the default - and | from lazyvim defaults
+-- vim.keymap.set("n", "<leader>V", ":vsp<CR>", { desc = "Split Window Vertically" })
+-- vim.keymap.set("n", "<leader>V", ":sp<CR>", { desc = "Split Window" })
 
 -- Change split orientation
 vim.keymap.set("n", "<leader>tk", "<C-w>t<C-w>K") -- change vertical to horizontal

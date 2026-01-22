@@ -68,3 +68,30 @@ vim.cmd([[autocmd BufEnter * set fo-=c fo-=r fo-=o]])
 
 --show line diagnostics automatically in hover window
 -- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
+-------------
+-- Auto-reload files changed outside of Neovim
+-------------
+
+-- 1. Enable the underlying feature
+vim.opt.autoread = true
+
+-- 2. Trigger checktime to see if file changed on disk
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd('checktime')
+    end
+  end,
+  pattern = "*",
+})
+
+-- 3. Notify when a reload actually happens (Noice/Nui compatible)
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  callback = function()
+    vim.notify("File changed on disk. Buffer reloaded.", vim.log.levels.WARN, {
+      title = "System",
+      render = "compact", -- Optional: Noice specific styling
+    })
+  end,
+})

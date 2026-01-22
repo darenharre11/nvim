@@ -17,6 +17,7 @@ vim.opt.backup = false                          -- creates a backup file
 vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
 vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
+vim.opt.encoding = "utf-8"                      -- the encoding written to a file
 vim.opt.hlsearch = true                         -- highlight all matches on previous search pattern
 vim.opt.pumheight = 10                          -- pop up menu height
 vim.opt.showtabline = 0                         -- always show tabs
@@ -101,6 +102,7 @@ vim.opt.updatetime = 250 -- ms to wait for trigger an event
 -- Disable nvim intro
 vim.opt.shortmess:append("sI")
 
+-- commented for now as LazyVim already does this
 -- Disable builtins plugins
 -- local disabled_built_ins = {
 --   "netrw",

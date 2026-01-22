@@ -25,7 +25,7 @@ vim.g.mapleader = " "
 ----------------------------------------------------------
 
 -- Reload nvim config
--- vim.keymap.set("n", "<leader>R", ":source ~/.config/nvim/init.lua<CR>")
+vim.keymap.set("n", "<leader>R", ":source ~/.config/nvim/init.lua<CR>")
 
 -- Fast saving with <leader> and w
 vim.keymap.set("n", "<leader>ww", ":w<CR>")
@@ -85,14 +85,22 @@ vim.keymap.set("x", "p", '"0p')
 -- vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv")
 -- vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
+-- Copilot binds
+vim.keymap.set("n", "<leader>ct", ":Copilot toggle<CR>")
+vim.keymap.set("n", "<leader>ce", ":Copilot enable<CR>")
+vim.keymap.set("n", "<leader>cd", ":Copilot disable<CR>")
+vim.keymap.set("n", "<leader>cp", ":Copilot panel<CR>")
+
+-- Yank to clipboard
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = "Yank to system clipboard" })
+
 -----------------------------------------------------------
 -- Buffer Splits and Controls
 -----------------------------------------------------------
 
 -- easy splits
--- just use the default - and | from lazyvim defaults
--- vim.keymap.set("n", "<leader>V", ":vsp<CR>", { desc = "Split Window Vertically" })
--- vim.keymap.set("n", "<leader>V", ":sp<CR>", { desc = "Split Window" })
+-- vim.keymap.set("n", "<leader>V", ":vsp<CR>", { desc = "Vertical Split" })
+-- vim.keymap.set("n", "<leader>V", ":vsp<CR>", { desc = "Vertical Split" })
 
 -- Change split orientation
 vim.keymap.set("n", "<leader>tk", "<C-w>t<C-w>K") -- change vertical to horizontal
@@ -109,6 +117,8 @@ vim.keymap.set("n", "<C-Up>", ":resize -2<CR>")
 vim.keymap.set("n", "<C-Down>", ":resize +2<CR>")
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
+
+
 
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
